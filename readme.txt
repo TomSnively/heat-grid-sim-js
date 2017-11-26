@@ -38,7 +38,7 @@ Ok, so what are the steps?
 [x]	Set up the HTML and CSS for one size of grid, perhaps the 3x3
 [x]	Set up the data in JavaScript
 [x]	Set up click to select, click again to deselect
-[ ]	Make a loop of heat intervals, and start the temperature calculations
+[x]	Make a loop of heat intervals, and start the temperature calculations
 [ ]	Figure out a color scheme, and make the hot cells different colors
 [ ]	Add the speed controls to make time move faster or slower
 [ ]	Add the radio button so the user can change the size of the grid
