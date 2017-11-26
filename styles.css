@@ -1,0 +1,23 @@
+.cell {
+    height:26px;
+    width:26px;
+    border-style:solid;
+    border-width:1px;
+    margin: 1px 1px 1px 1px;
+    background-color:#FFF;
+    display:inline;
+    float:left;
+}
+
+.row {
+    clear:both;
+}
+
+#grid{
+    height:90px;
+    width:90px;
+    border-style:solid;
+    border-width:1px;
+    margin:auto;
+    margin-top:5%;
+}
