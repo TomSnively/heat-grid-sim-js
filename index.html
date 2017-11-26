@@ -11,12 +11,20 @@
         <p>Click on a cell to select it and add heat to that cell. (Selected cells have a red borders.) You can heat as many or as few of the cells as you like.</p>
         <p>Each heat interval, after the heat is added, the heat spreads from each cell to its neighbor cells.</p>
 
+        Choose the grid size; resizing will start over.
+        <input type="radio" name="gridSize" value="3" onclick="sizeChecked(3)"> 3x3
+        <input type="radio" name="gridSize" value="5" onclick="sizeChecked(5)"> 5x5
+        <input type="radio" name="gridSize" value="7" onclick="sizeChecked(7)"> 7x7
+        <input type="radio" name="gridSize" value="11" onclick="sizeChecked(11)"> 11x11
+
         <div id="grid">
 
         </div>
 
         <br />
-        <span id="totalHeat">0</span>&nbspTotal Heat
+        <div id="totalHeatFormat">
+            <span id="totalHeat">0</span>&nbspTotal Heat
+        </div>
         <script src="index.js"></script>
     </body>
 </html>

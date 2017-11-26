@@ -1,3 +1,11 @@
+function sizeChecked(size) {
+    //var sizeRadio = document.getElementById("gridSize");
+    //console.log(sizeRadio);
+    gridSize = size;
+    initializeGridHTML(gridSize);
+    initializeGridData(gridSize);
+}
+
 function cellClicked (row, column) {
     grid[row][column].selected = !grid[row][column].selected;
     //console.log(row, column, grid[row][column].selected);
@@ -25,9 +33,7 @@ function initializeGridHTML(size) {
         gridHTML += '<div class=\"row\">';
 
         for (var j = 1; j <= size; j++) {
-            gridHTML += '<div class=\"cell\" id="r' + i + '-' + j + '\" onclick=\"cellClicked(' + i + ', ' + j + ')\">1</div>';
-
-
+            gridHTML += '<div class=\"cell\" id="r' + i + '-' + j + '\" onclick=\"cellClicked(' + i + ', ' + j + ')\">0</div>';
         }
         gridHTML += '</div>';
     }
@@ -38,6 +44,30 @@ function initializeGridHTML(size) {
     //console.log(gridHTML);
     grid.innerHTML = gridHTML;
 }
+
+function initializeGridData(size) {
+    // initialize a 2-dimensional array
+    grid = new Array(gridSize + 1);
+    for (var i=0; i <= gridSize + 1; i++) {
+        grid[i] = new Array(gridSize + 1);
+    }
+
+// the grid is going to go from 0 to gridsize+1.
+// The 0 row and column and gridsize+1 row and column will have temperature 0, and never change.
+    console.log ('initializing grid data...');
+    for (i=0; i <= gridSize + 1; i++) {
+        for (var j=0; j <= gridSize + 1; j++) {
+            grid[i][j] = new Object();
+            grid[i][j].temperature = 0;
+            grid[i][j].lasttemp = 0;
+            grid[i][j].selected = false;     // should start off
+        }
+    }
+
+
+}
+
+
 
 function heatInterval(size) {
     //console.log ('in heatInterval');
@@ -93,34 +123,13 @@ function updateGridHTML(size) {
 console.log ('index.js starting...');
 var gridSize = 11;
 var heatIncrease = 1;
+var grid = "";
 
 initializeGridHTML(gridSize);
 
-// initialize a 2-dimensional array
-var grid = new Array(gridSize + 1);
-for (var i=0; i <= gridSize + 1; i++) {
-    grid[i] = new Array(gridSize + 1);
-}
-
-// the grid is going to go from 0 to gridsize+1.
-// The 0 row and column and gridsize+1 row and column will have temperature 0, and never change.
-console.log ('initializing grid data...');
-for (i=0; i <= gridSize + 1; i++) {
-    for (var j=0; j <= gridSize + 1; j++) {
-        grid[i][j] = new Object();
-        grid[i][j].temperature = 0;
-        grid[i][j].lasttemp = 0;
-        grid[i][j].selected = false;     // should start off
-    }
-}
+initializeGridData(gridSize);
 
 window.setInterval(function(){
     heatInterval(gridSize);
     updateGridHTML(gridSize);
 }, 1000);
-
-/*
-window.setInterval(function(){
-    updateGridHTML(gridSize);
-}, 5000);
-*/

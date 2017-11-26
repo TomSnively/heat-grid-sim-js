@@ -41,6 +41,6 @@ Ok, so what are the steps?
 [x]	Make a loop of heat intervals, and start the temperature calculations
 [ ]	Figure out a color scheme, and make the hot cells different colors
 [ ]	Add the speed controls to make time move faster or slower
-[ ]	Add the radio button so the user can change the size of the grid
+[x]	Add the radio button so the user can change the size of the grid
 
 Let's go!
