@@ -8,14 +8,18 @@
     <body>
         <h1>Heat Grid Simulator</h1>
         <p>Read the <a href="readme.txt">Readme</a></p>
-        <p>Click on a cell to select it and add heat to that cell. (Selected cells have a red borders.) You can heat as many or as few of the cells as you like.</p>
-        <p>Each heat interval, after the heat is added, the heat spreads from each cell to its neighbor cells.</p>
+        <p>Click on a cell (a square in the grid below) to select it and add heat to that cell. (Selected cells have a red borders.) You can heat as many or as few of the cells as you like.</p>
+        <p>Each heat interval, after the heat is added, the heat spreads from each cell to its neighbor cells. Heat will be lost off the grid on all sides.</p>
 
-        Choose the grid size; resizing will start over.
+        <p>Choose the grid size; resizing will start over.
         <input type="radio" name="gridSize" value="3" onclick="sizeChecked(3)"> 3x3
         <input type="radio" name="gridSize" value="5" onclick="sizeChecked(5)"> 5x5
         <input type="radio" name="gridSize" value="7" onclick="sizeChecked(7)"> 7x7
-        <input type="radio" name="gridSize" value="11" onclick="sizeChecked(11)"> 11x11
+        <input type="radio" name="gridSize" value="11" checked="checked" onclick="sizeChecked(11)"> 11x11
+        </p>
+        <p>Choose the heat interval speed. How many times does the screen update per second (1-20)?
+            <input type="number" id="intervalSpeed" min="1" max="20" value="1" onchange="speedChanged()"/></p>
+
 
         <div id="grid">
 

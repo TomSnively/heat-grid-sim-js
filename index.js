@@ -6,6 +6,12 @@ function sizeChecked(size) {
     initializeGridData(gridSize);
 }
 
+function speedChanged() {
+    var speed = document.getElementById("intervalSpeed");
+    //console.log(speed.value);
+    intervalRate = speed.value;
+}
+
 function cellClicked (row, column) {
     grid[row][column].selected = !grid[row][column].selected;
     //console.log(row, column, grid[row][column].selected);
@@ -116,6 +122,13 @@ function updateGridHTML(size) {
         }
     }
     document.getElementById('totalHeat').innerHTML = Math.round(totalHeat*10)/10;
+
+    // Set the time for the next update.
+    window.setTimeout(function(){
+        heatInterval(gridSize);
+        updateGridHTML(gridSize);
+    }, 1000 / intervalRate);
+
 }
 
 // MAIN ROUTINE HERE
@@ -123,13 +136,18 @@ function updateGridHTML(size) {
 console.log ('index.js starting...');
 var gridSize = 11;
 var heatIncrease = 1;
+var intervalRate = 1;
 var grid = "";
 
 initializeGridHTML(gridSize);
-
 initializeGridData(gridSize);
 
-window.setInterval(function(){
+
+
+window.setTimeout(function(){
     heatInterval(gridSize);
     updateGridHTML(gridSize);
-}, 1000);
+}, 1000 / intervalRate);
+
+
+

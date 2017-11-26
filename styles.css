@@ -1,7 +1,7 @@
 .cell {
     font-size: 12px;
     text-align: center;
-
+    line-height: 26px;
     height:26px;
     width:26px;
     border-style:solid;
@@ -22,7 +22,7 @@
     border-style:solid;
     border-width:1px;
     margin:auto;
-    margin-top:5%;
+    margin-top:2%;
 }
 
 #totalHeatFormat {
