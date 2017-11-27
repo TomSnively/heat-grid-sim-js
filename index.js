@@ -1,7 +1,49 @@
+function colorChooser (heat, maxHeat) {
+    var percentile = heat / maxHeat;
+    if (percentile < 1/800) {
+        return ("rgb(0, 0, 0)");
+    } else if (percentile < 1/12) {
+        return ("rgb(99, 17, 0)");
+    } else if (percentile < 2/12) {
+        return ("rgb(153, 33, 0)");
+    } else if (percentile < 3/12) {
+        return ("rgb(198, 14, 0)");
+    } else if (percentile < 4/12) {
+        return ("rgb(252, 66, 0)");
+    } else if (percentile < 5/12) {
+        return ("rgb(252, 79, 0)");
+    } else if (percentile < 6/12) {
+        return ("rgb(252, 92, 0)");
+    } else if (percentile < 7/12) {
+        return ("rgb(252, 102, 0)");
+    } else if (percentile < 8/12) {
+        return ("rgb(252, 113, 0)");
+    } else if (percentile < 9/12) {
+        return ("rgb(252, 148, 0)");
+    } else if (percentile < 10/12) {
+        return ("rgb(252, 183, 0)");
+    } else if (percentile < 11/12) {
+        return ("rgb(252, 207, 0)");
+    } else {
+        return ("rgb(252, 228, 0)");
+    }
+}
+
 function sizeChecked(size) {
     //var sizeRadio = document.getElementById("gridSize");
     //console.log(sizeRadio);
     gridSize = size;
+    if(size == 11) {
+        maxHeat = 31;
+    } else if (size == 7) {
+        maxHeat = 13.3;
+    } else if (size == 5) {
+        maxHeat = 7.1;
+    } else if (size == 3) {
+        maxHeat = 2.7;
+    } else {
+        console.log ('sizeChecked: invalid size');
+    }
     initializeGridHTML(gridSize);
     initializeGridData(gridSize);
 }
@@ -26,11 +68,10 @@ function cellClicked (row, column) {
     } else {
         cell.style.borderColor = "black";
     }
-
 }
 
 function initializeGridHTML(size) {
-    console.log('initializing grid HTML');
+    //console.log('initializing grid HTML');
     var grid = document.getElementById("grid");
 
     var gridHTML = "";
@@ -60,7 +101,7 @@ function initializeGridData(size) {
 
 // the grid is going to go from 0 to gridsize+1.
 // The 0 row and column and gridsize+1 row and column will have temperature 0, and never change.
-    console.log ('initializing grid data...');
+    //console.log ('initializing grid data...');
     for (i=0; i <= gridSize + 1; i++) {
         for (var j=0; j <= gridSize + 1; j++) {
             grid[i][j] = new Object();
@@ -69,11 +110,7 @@ function initializeGridData(size) {
             grid[i][j].selected = false;     // should start off
         }
     }
-
-
 }
-
-
 
 function heatInterval(size) {
     //console.log ('in heatInterval');
@@ -104,10 +141,13 @@ function heatInterval(size) {
                 grid[i+1][j].lasttemp +
                 grid[i+1][j+1].lasttemp
             ) / 9;
+            var color = colorChooser(grid[i][j].temperature, maxHeat);
+            var cellID = 'r' + i + '-' + j;
+            //console.log(cellID);
+            var cell = document.getElementById(cellID);
+            cell.style.backgroundColor = color;
         }
     }
-
-    //console.log('4,4 is ' + grid[4][4].temperature);
 }
 
 function updateGridHTML(size) {
@@ -128,22 +168,43 @@ function updateGridHTML(size) {
         heatInterval(gridSize);
         updateGridHTML(gridSize);
     }, 1000 / intervalRate);
+}
 
+function turnAllOn() {
+    for (var i = 1; i <= gridSize; i++) {
+        for (var j = 1; j <= gridSize; j++) {
+            if (!grid[i][j].selected) {
+                //grid[i][j].selected = true;
+                cellClicked(i, j);
+            }
+        }
+    }
+}
+
+function turnAllOff() {
+    for (var i = 1; i <= gridSize; i++) {
+        for (var j = 1; j <= gridSize; j++) {
+            if (grid[i][j].selected) {
+                //grid[i][j].selected = false;
+                cellClicked(i, j);
+            }
+        }
+    }
 }
 
 // MAIN ROUTINE HERE
 
-console.log ('index.js starting...');
+//console.log ('index.js starting...');
 var gridSize = 11;
 var heatIncrease = 1;
 var intervalRate = 1;
+var maxHeat = 31;
 var grid = "";
 
 initializeGridHTML(gridSize);
 initializeGridData(gridSize);
 
-
-
+// set the first setTimeout. Each subsequent one gets set in the updateGridHTML function.
 window.setTimeout(function(){
     heatInterval(gridSize);
     updateGridHTML(gridSize);

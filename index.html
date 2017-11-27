@@ -18,7 +18,12 @@
         <input type="radio" name="gridSize" value="11" checked="checked" onclick="sizeChecked(11)"> 11x11
         </p>
         <p>Choose the heat interval speed. How many times does the screen update per second (1-20)?
-            <input type="number" id="intervalSpeed" min="1" max="20" value="1" onchange="speedChanged()"/></p>
+            <input type="number" id="intervalSpeed" min="1" max="20" value="1" onchange="speedChanged()"/>
+        </p>
+        <p>
+            <input type="button" value="Turn All On" onclick="turnAllOn()" />
+            <input type="button" value="Turn All Off" onclick="turnAllOff()" />
+        </p>
 
 
         <div id="grid">

@@ -39,8 +39,9 @@ Ok, so what are the steps?
 [x]	Set up the data in JavaScript
 [x]	Set up click to select, click again to deselect
 [x]	Make a loop of heat intervals, and start the temperature calculations
-[ ]	Figure out a color scheme, and make the hot cells different colors
+[x]	Figure out a color scheme, and make the hot cells different colors
 [x]	Add the speed controls to make time move faster or slower
 [x]	Add the radio button so the user can change the size of the grid
-
-Let's go!
+[x] Bonus - add a button to turn on / turn off all the cells
+[ ] would like to change the color of the numbers for the yellows so they are more readable
+[ ] would maybe like to change the colors of the borders (red and black) so they are always recognizable
