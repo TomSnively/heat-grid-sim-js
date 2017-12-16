@@ -33,7 +33,11 @@ function sizeChecked(size) {
     //var sizeRadio = document.getElementById("gridSize");
     //console.log(sizeRadio);
     gridSize = size;
-    if(size == 11) {
+    if(size == 17) {
+        maxHeat = 70;
+    } else if (size == 13) {
+        maxHeat = 42.5;
+    } else if (size == 11) {
         maxHeat = 31;
     } else if (size == 7) {
         maxHeat = 13.3;
@@ -197,7 +201,7 @@ function turnAllOff() {
 //console.log ('index.js starting...');
 var gridSize = 11;
 var heatIncrease = 1;
-var intervalRate = 1;
+var intervalRate = 5;
 var maxHeat = 31;
 var grid = "";
 
