@@ -177,7 +177,8 @@ function updateGridHTML(size) {
             cell.innerHTML = Math.round(grid[i][j].temperature*10)/10;
         }
     }
-    document.getElementById('totalHeat').innerHTML = Math.round(totalHeat*10)/10;
+    document.getElementById('totalHeat').innerHTML = (Math.round(totalHeat*10)/10).toLocaleString(undefined,
+        {'minimumFractionDigits':1,'maximumFractionDigits':1});
 
     // Set the time for the next update.
     window.setTimeout(function(){
