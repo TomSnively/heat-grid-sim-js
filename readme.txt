@@ -43,6 +43,6 @@ Ok, so what are the steps?
 [x] Add the speed controls to make time move faster or slower
 [x] Add the radio button so the user can change the size of the grid
 [x] Bonus - add a button to turn on / turn off all the cells
-[ ] would like to change the color of the numbers for the yellows so they are more readable
+[x] make the website responsive so it looks good on a tablet
+[x] would like to change the color of the numbers for the yellows so they are more readable
 [ ] would maybe like to change the colors of the borders (red and black) so they are always recognizable
-[ ] make the website responsive so it looks good on a tablet

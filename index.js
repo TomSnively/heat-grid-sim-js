@@ -29,6 +29,16 @@ function colorChooser (heat, maxHeat) {
     }
 }
 
+function colorChooserText (heat, maxHeat) {
+    var percentile = heat / maxHeat;
+    if (percentile < 2/3) {
+        return ("rgb(255, 255, 255)");
+    } else {
+        return ("rgb(0, 0, 0)");
+    }
+}
+
+
 function sizeChecked(size) {
     //var sizeRadio = document.getElementById("gridSize");
     //console.log(sizeRadio);
@@ -146,10 +156,12 @@ function heatInterval(size) {
                 grid[i+1][j+1].lasttemp
             ) / 9;
             var color = colorChooser(grid[i][j].temperature, maxHeat);
+            var textColor = colorChooserText(grid[i][j].temperature, maxHeat);
             var cellID = 'r' + i + '-' + j;
             //console.log(cellID);
             var cell = document.getElementById(cellID);
             cell.style.backgroundColor = color;
+            cell.style.color = textColor;
         }
     }
 }
